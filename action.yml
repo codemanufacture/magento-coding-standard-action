@@ -14,24 +14,31 @@ inputs:
     required: false
     default: 8
   verbosity:
+    description: "Code Sniffer verbosity"
     required: false
     default: ""
   phpcs_path:
     required: false
     default: 'phpcs'
   install_magento2_standard:
-    description: Installs Magento Coding Standard when set to true
+    description: "Installs Magento Coding Standard when set to true"
     required: false
     default: true
   magento2_standard_version:
     required: false
     default: "*"
   directory:
+    description: "Working directory where analysis is run"
+    required: false
     default: ${{ github.workspace }}
   processes:
     description: "How many files should be checked simultaneously"
     required: false
     default: 1
+  extensions:
+    description: "A comma separated list of file extensions to check"
+    required: false
+    default: "php"
 runs:
   using: "composite"
   steps:
@@ -58,6 +65,7 @@ runs:
         --report=${{ inputs.report_style }} \
         --severity=${{ inputs.severity }} \
         --standard=${{ inputs.standard }} \
+        --extensions=${{ inputs.extensions }} \
         ${{ inputs.verbosity }} ${{ inputs.directory }} \
         -s $*
         
