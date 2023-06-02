@@ -14,41 +14,68 @@ inputs:
     required: false
     default: 8
   verbosity:
+    description: "Code Sniffer verbosity"
     required: false
     default: ""
   phpcs_path:
     required: false
-    default: 'composer global exec -- phpcs'
+    default: 'phpcs'
   install_magento2_standard:
-    description: 
+    description: "Installs Magento Coding Standard when set to true"
     required: false
     default: true
   magento2_standard_version:
     required: false
     default: "*"
   directory:
+    description: "Working directory where analysis is run"
+    required: false
     default: ${{ github.workspace }}
+  processes:
+    description: "How many files should be checked simultaneously"
+    required: false
+    default: 1
+  extensions:
+    description: "A comma separated list of file extensions to check"
+    required: false
+    default: "php"
+  ignore_warnings_on_exit:
+    required: false
+    default: 0
+  ignore_errors_on_exit:
+    required: false
+    default: 0
 runs:
   using: "composite"
   steps:
     - name: Install Magento 2 Coding Standard
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       if: ${{ inputs.install_magento2_standard }}
       run: |
         composer global require magento/magento-coding-standard:${{ inputs.magento2_standard_version }}
         composer global require phpcompatibility/php-compatibility:*
         composer global -- exec phpcs --config-set installed_paths ../../magento/magento-coding-standard/,../../phpcompatibility/php-compatibility
     - name: Check if phpcs exists
+      shell: bash
       run: ${{ inputs.phpcs_path }} --version
     - name: Add problem matchers
+      shell: bash
       run:
         echo "::add-matcher::${{ github.action_path }}/problem-matcher.json"
-    - run: |
+    - shell: bash
+      run: |
         ${{ inputs.phpcs_path }} \
         --parallel=${{ inputs.processes }} \
+        --runtime-set ignore_errors_on_exit ${{ inputs.ignore_errors_on_exit }} \
+        --runtime-set ignore_warnings_on_exit ${{ inputs.ignore_warnings_on_exit }} \
         --report=${{ inputs.report_style }} \
         --severity=${{ inputs.severity }} \
         --standard=${{ inputs.standard }} \
-        ${{ inputs.verbosity }} ${{ inputs.directory }}
+        --extensions=${{ inputs.extensions }} \
+        ${{ inputs.verbosity }} ${{ inputs.directory }} \
+        -s $*
         
         
 branding:

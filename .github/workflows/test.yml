@@ -9,15 +9,18 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/checkout@v3
       with:
-        repository: markshust/magento2-module-disabletwofactorauth
-        ref: master
+        repository: codemanufacture/magento2-dummy-module
+        ref: main
         path: module
     - name: Setup PHP with composer
       uses: shivammathur/setup-php@v2
       with:
         php-version: 8.1
-        composer: 2.3
+        tools: composer:2.3, phpcs:3.6
     - name: Run coding standard analysis
       uses: ./
       with:
-        directory: module
+        directory: "${{github.workspace}}/module"
+        severity: 5
+        ignore_errors_on_exit: 1
+        ignore_warnings_on_exit: 1
