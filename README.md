@@ -2,10 +2,6 @@
 
 This [GitHub Action](https://github.com/actions) performs static code analysis using [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
 
-![Ubuntu badge](misc/badge-ubuntu.svg)
-
-```
-
 ## Usage
 
 Create `.github/workflows/coding-standard.yml` in your
