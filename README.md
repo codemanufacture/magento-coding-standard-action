@@ -28,11 +28,14 @@ jobs:
 
 ## Inputs (specify using with:)
 
-| Option      | Default value | Description                                                                                          |
-|-------------|---------------|------------------------------------------------------------------------------------------------------|
-| `standard`  | "Magento2"    | The name or path of the coding standard to use                                                       |
-|             |               |                                                                                                      |
-| `severity`  | 8             |                                                                                                      |
-| `verbosity` | no value      | -v Print processed files -vv Print ruleset and token output -vvv  Print sniff processing information |
-|             |               |                                                                                                      |
-|             |               |                                                                                                      |
+| Option                      | Default value | Description                                                                                          |
+|-----------------------------|---------------|------------------------------------------------------------------------------------------------------|
+| `standard`                  | "Magento2"    | The name or path of the coding standard to use                                                       |
+| `severity`                  | 8             | The minimum severity required to display an error or warning                                         |
+| `verbosity`                 | no value      | -v Print processed files -vv Print ruleset and token output -vvv  Print sniff processing information |
+| `report_style`              | "checkstyle"  |                                                                                                      |
+| `processes`                 | 1             | How many files should be checked simultaneously                                                      |
+| `install_magento2_standard` | true          | Installs Magento Coding Standard when set to true                                                    |
+| `magento2_standard_version` | "*"           | Lastest version installed by setting "*"                                                             |
+
+

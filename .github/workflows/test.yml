@@ -20,4 +20,4 @@ jobs:
     - name: Run coding standard analysis
       uses: ./
       with:
-        directory: module
+        directory: "${{github.workspace}}/module"

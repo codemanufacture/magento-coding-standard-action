@@ -20,7 +20,7 @@ inputs:
     required: false
     default: 'composer global exec -- phpcs'
   install_magento2_standard:
-    description: 
+    description: Installs Magento Coding Standard when set to true
     required: false
     default: true
   magento2_standard_version:
@@ -28,6 +28,10 @@ inputs:
     default: "*"
   directory:
     default: ${{ github.workspace }}
+  processes:
+    description: "How many files should be checked simultaneously"
+    required: false
+    default: 1
 runs:
   using: "composite"
   steps:
