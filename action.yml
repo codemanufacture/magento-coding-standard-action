@@ -18,7 +18,7 @@ inputs:
     default: ""
   phpcs_path:
     required: false
-    default: 'composer global exec -- phpcs'
+    default: 'phpcs'
   install_magento2_standard:
     description: Installs Magento Coding Standard when set to true
     required: false
