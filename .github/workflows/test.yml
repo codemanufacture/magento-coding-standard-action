@@ -1,0 +1,22 @@
+name: "Magento 2 Coding Standard"
+on:
+  pull_request:
+  push:
+jobs:
+  coding-standard:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+      with:
+        repository: markshust/magento2-module-disabletwofactorauth
+        path: module
+    - name: Setup PHP with composer
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+        composer: 2.3
+    - name: Run coding standard analysis
+      uses: ./
+      with:
+        directory: module

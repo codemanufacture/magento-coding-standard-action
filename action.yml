@@ -1,0 +1,56 @@
+name: "Magento 2 Coding Standard"
+author: "Codemanufacture"
+description: "Performs static code analysis with Magento 2 Coding Standard"
+inputs:
+  standard:
+    description: "The name or path of the coding standard to use"
+    required: false
+    default: "Magento2"
+  report_style:
+    required: false
+    default: "checkstyle"
+  severity:
+    description: "The minimum severity required to display an error or warning"
+    required: false
+    default: 8
+  verbosity:
+    required: false
+    default: ""
+  phpcs_path:
+    required: false
+    default: 'composer global exec -- phpcs'
+  install_magento2_standard:
+    description: 
+    required: false
+    default: true
+  magento2_standard_version:
+    required: false
+    default: "*"
+  directory:
+    default: ${{ github.workspace }}
+runs:
+  using: "composite"
+  steps:
+    - name: Install Magento 2 Coding Standard
+      if: ${{ inputs.install_magento2_standard }}
+      run: |
+        composer global require magento/magento-coding-standard:${{ inputs.magento2_standard_version }}
+        composer global require phpcompatibility/php-compatibility:*
+        composer global -- exec phpcs --config-set installed_paths ../../magento/magento-coding-standard/,../../phpcompatibility/php-compatibility
+    - name: Check if phpcs exists
+      run: ${{ inputs.phpcs_path }} --version
+    - name: Add problem matchers
+      run:
+        echo "::add-matcher::${{ github.action_path }}/problem-matcher.json"
+    - run: |
+        ${{ inputs.phpcs_path }} \
+        --parallel=${{ inputs.processes }} \
+        --report=${{ inputs.report_style }} \
+        --severity=${{ inputs.severity }} \
+        --standard=${{ inputs.standard }} \
+        ${{ inputs.verbosity }} ${{ inputs.directory }}
+        
+        
+branding:
+  icon: 'check-square'
+  color: 'blue'
