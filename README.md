@@ -39,7 +39,10 @@ jobs:
 | `magento2_standard_version` | "*"               | Lastest version installed by setting "*"                                                             |
 | `extensions`                | "php"             | A comma separated list of file extensions to check                                                   |
 | `phpcs_path`                | "phpcs"           | Path to Code Sniffer binary                                                                          |
-| `directory`                 | $GITHUB_WORKSPACE | Working directory where analysis is run                                                                                            |
+| `directory`                 | $GITHUB_WORKSPACE | Working directory where analysis is run                                                              |
+| `ignore_errors_on_exit`     | 0                 | Ignoring errors when generating the exit code when set to `1`                                        |
+| `ignore_warnings_on_exit`   | 0                 | Ignoring warnings when generating the exit code when set to `1`                                      |
+
 
 ## Motivation
 
@@ -57,4 +60,3 @@ Goals of this actions are:
 * Provide flexibility
 * Low level of maintenance
 * Future proof
-

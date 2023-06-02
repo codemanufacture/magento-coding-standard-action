@@ -39,6 +39,12 @@ inputs:
     description: "A comma separated list of file extensions to check"
     required: false
     default: "php"
+  ignore_warnings_on_exit:
+    required: false
+    default: 0
+  ignore_errors_on_exit:
+    required: false
+    default: 0
 runs:
   using: "composite"
   steps:
@@ -60,6 +66,8 @@ runs:
         echo "::add-matcher::${{ github.action_path }}/problem-matcher.json"
     - shell: bash
       run: |
+        ${{ inputs.phpcs_path }} --runtime-set ignore_warnings_on_exit ${{ inputs.ignore_warnings_on_exit }}
+        ${{ inputs.phpcs_path }} --runtime-set ignore_errors_on_exit ${{ inputs.ignore_errors_on_exit }}
         ${{ inputs.phpcs_path }} \
         --parallel=${{ inputs.processes }} \
         --report=${{ inputs.report_style }} \
