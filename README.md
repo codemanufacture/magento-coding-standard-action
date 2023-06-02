@@ -1,6 +1,6 @@
 # Magento 2 Coding Standard GitHub Action
 
-This [GitHub Action](https://github.com/actions) performs static code analysis using [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
+This [GitHub Action](https://github.com/actions) performs static code analysis using [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) and [Magento Coding Standard](https://github.com/magento/magento-coding-standard).
 
 ## Usage
 
@@ -23,7 +23,7 @@ jobs:
         php-version: 8.1
         tools: composer:2.3, phpcs:3.6
     - name: Run coding standard analysis
-      uses: codemanufacture/magento-coding-standard-action
+      uses: codemanufacture/magento-coding-standard-action@main
 ```
 
 ## Inputs (specify using with:)
@@ -41,4 +41,20 @@ jobs:
 | `phpcs_path`                | "phpcs"           | Path to Code Sniffer binary                                                                          |
 | `directory`                 | $GITHUB_WORKSPACE | Working directory where analysis is run                                                                                            |
 
+## Motivation
+
+There are other GitHub actions for Magento like [ExtDn Actions](https://github.com/extdn/github-actions-m2)
+or [MAD-IT](https://github.com/MAD-I-T/magento-actions).
+
+They both:
+* heavily rely on docker
+* require fair bit of maintenance to update docker images
+* hard to track change log due to multiple actions being bundled together
+
+Goals of this actions are:
+
+* Do one thing only - run coding standard analysis
+* Provide flexibility
+* Low level of maintenance
+* Future proof
 
