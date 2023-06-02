@@ -21,3 +21,4 @@ jobs:
       uses: ./
       with:
         directory: "${{github.workspace}}/module"
+        severity: 5
