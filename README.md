@@ -10,7 +10,7 @@ repository with the following contents:
 ```yaml
 name: "Magento 2 Coding Standard"
 on:
-  pull_request
+  pull_request:
   push:
 jobs:
   coding-standard:

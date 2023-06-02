@@ -32,17 +32,21 @@ runs:
   using: "composite"
   steps:
     - name: Install Magento 2 Coding Standard
+      shell: bash
       if: ${{ inputs.install_magento2_standard }}
       run: |
         composer global require magento/magento-coding-standard:${{ inputs.magento2_standard_version }}
         composer global require phpcompatibility/php-compatibility:*
         composer global -- exec phpcs --config-set installed_paths ../../magento/magento-coding-standard/,../../phpcompatibility/php-compatibility
     - name: Check if phpcs exists
+      shell: bash
       run: ${{ inputs.phpcs_path }} --version
     - name: Add problem matchers
+      shell: bash
       run:
         echo "::add-matcher::${{ github.action_path }}/problem-matcher.json"
-    - run: |
+    - shell: bash
+      run: |
         ${{ inputs.phpcs_path }} \
         --parallel=${{ inputs.processes }} \
         --report=${{ inputs.report_style }} \
