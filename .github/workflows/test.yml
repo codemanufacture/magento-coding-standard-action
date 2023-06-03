@@ -19,7 +19,7 @@ jobs:
           ref: v1.9.0
           path: bats
       - name: Install bats
-        run: sudo ./install.sh
+        run: sudo ./install.sh /usr/local
         working-directory: bats
       - name: Install PHP and composer
         uses: shivammathur/setup-php@v2
