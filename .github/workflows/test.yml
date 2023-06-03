@@ -1,26 +1,30 @@
-name: "Magento 2 Coding Standard"
+name: "Magento 2 Coding Standard Tests"
 on:
   pull_request:
+    paths-ignore:
+      - '**/*.md'
   push:
+    - main:
+        paths-ignore:
+          - '**/*.md'
 jobs:
-  coding-standard:
+  tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/checkout@v3
-      with:
-        repository: codemanufacture/magento2-dummy-module
-        ref: main
-        path: module
-    - name: Setup PHP with composer
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: 8.1
-        tools: composer:2.3, phpcs:3.6
-    - name: Run coding standard analysis
-      uses: ./
-      with:
-        directory: "${{github.workspace}}/module"
-        severity: 5
-        ignore_errors_on_exit: 1
-        ignore_warnings_on_exit: 1
+      - uses: actions/checkout@v3
+      - name: Clone bats repository
+        uses: actions/checkout@v3
+        with:
+          repository: bats-core/bats-core
+          ref: v1.9.0
+          path: bats
+      - name: Install bats
+        run: sudo ./install.sh
+        working-directory: bats
+      - name: Install PHP and composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          tools: composer:2.3, phpcs:3.6
+      - name: Run tests
+        run: bats --tap tests

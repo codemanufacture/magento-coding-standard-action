@@ -20,5 +20,4 @@ teardown_file() {
     run composer global -- exec phpcs -i
     [[ "$output" =~ "The installed coding standards are" ]]
     [[ "$output" =~ "Magento2" ]]
-
 }
