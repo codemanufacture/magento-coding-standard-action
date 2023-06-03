@@ -4,9 +4,9 @@ on:
     paths-ignore:
       - '**/*.md'
   push:
-    - main:
-        paths-ignore:
-          - '**/*.md'
+    branches: ["main"]
+    paths-ignore:
+      - '**/*.md'
 jobs:
   coding-standard:
     runs-on: ubuntu-latest
