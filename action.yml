@@ -63,6 +63,8 @@ runs:
       shell: bash
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        INPUT_CODING_STANDARD_PACKAGE: ${{ inputs.coding_standard_package }}
+        INPUT_CODING_STANDARD_VERSION: ${{ inputs.coding_standard_version }}
       if: ${{ inputs.install_coding_standard }}
       run: ${{ github.action_path }}/src/install_coding_standard.bash
     - name: Check if phpcs exists
@@ -75,6 +77,19 @@ runs:
     - name: Running coding standard analysis
       shell: bash
       run: ${{ github.action_path }}/src/run_coding_standard.bash
+      env:
+        INPUT_SEVERITY: ${{ inputs.severity }}
+        INPUT_ERROR_SEVERITY: ${{ inputs.error_severity }}
+        INPUT_WARNING_SEVERITY: ${{ inputs.warning_severity }}
+        INPUT_DIRECTORY: ${{ inputs.directory }}
+        INPUT_PHPCS_PATH: ${{ inputs.phpcs_path }}
+        INPUT_IGNORE_ERRORS_ON_EXIT: ${{ inputs.ignore_errors_on_exit }}
+        INPUT_IGNORE_WARNINGS_ON_EXIT: ${{ inputs.ignore_warnings_on_exit }}
+        INPUT_EXTENSIONS: ${{ inputs.extensions }}
+        INPUT_PROCESSES: ${{ inputs.processes }}
+        INPUT_STANDARD: ${{ inputs.standard }}
+        INPUT_VERBOSITY: ${{ inputs.verbosity }}
+        INPUT_REPORT_STYLE: ${{ inputs.report_style }}
 branding:
   icon: 'check-square'
   color: 'blue'
