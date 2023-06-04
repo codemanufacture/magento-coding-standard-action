@@ -4,7 +4,7 @@ description: "Performs static code analysis with Magento 2 Coding Standard"
 inputs:
   standard:
     description: "The name or path of the coding standard to use"
-    required: false
+    required: true
     default: "Magento2"
   report_style:
     required: false
@@ -12,21 +12,26 @@ inputs:
   severity:
     description: "The minimum severity required to display an error or warning"
     required: false
-    default: 8
   verbosity:
     description: "Code Sniffer verbosity"
     required: false
     default: ""
   phpcs_path:
-    required: false
+    description: "Path to PHP_CodeSniffer binary"
+    required: true
     default: 'phpcs'
-  install_magento2_standard:
-    description: "Installs Magento Coding Standard when set to true"
+  install_coding_standard:
+    description: "Installs coding standard"
     required: false
     default: true
-  magento2_standard_version:
+  coding_standard_version:
+    description: "Coding standard version"
     required: false
     default: "*"
+  coding_standard_package:
+    description: "Coding standard package name"
+    required: false
+    default: "magento/magento-coding-standard"
   directory:
     description: "Working directory where analysis is run"
     required: false
@@ -48,12 +53,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install Magento 2 Coding Standard
+    - name: Installing coding standard
       shell: bash
       env:
         GITHUB_TOKEN: ${{ github.token }}
-      if: ${{ inputs.install_magento2_standard }}
-      run: ${{ github.action_path }}/src/install_magento_coding_standard.sh
+      if: ${{ inputs.install_coding_standard }}
+      run: ${{ github.action_path }}/src/install_coding_standard.bash
     - name: Check if phpcs exists
       shell: bash
       run: ${{ inputs.phpcs_path }} --version
