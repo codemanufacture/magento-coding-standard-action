@@ -48,20 +48,11 @@ jobs:
 | `ignore`                    | no value                        | A comma separated list of patterns to ignore files and directories                                   |
 
 
-
-## Motivation
-
-There are other GitHub actions for Magento like [ExtDn Actions](https://github.com/extdn/github-actions-m2)
-or [MAD-IT](https://github.com/MAD-I-T/magento-actions).
-
-They both:
-* heavily rely on docker
-* require fair bit of maintenance to update docker images
-* hard to track change log due to multiple actions being bundled together
-
-Goals of this actions are:
+## Goals of this actions are:
 
 * Do one thing only - run coding standard analysis
 * Provide flexibility
 * Low level of maintenance
 * Future proof
+* Semantic versioning
+* Automated tests

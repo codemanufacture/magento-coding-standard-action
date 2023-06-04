@@ -1,6 +1,6 @@
-name: "Magento 2 Coding Standard"
+name: "Coding standard analysis with PHP_CodeSniffer"
 author: "Codemanufacture"
-description: "Performs static code analysis with Magento 2 Coding Standard"
+description: "Performs static code analysis with PHP_CodeSniffer and Magento 2 coding standard by default"
 inputs:
   standard:
     description: "The name or path of the coding standard to use"
@@ -72,8 +72,9 @@ runs:
       shell: bash
       run:
         echo "::add-matcher::${{ github.action_path }}/problem-matcher.json"
-    - shell: bash
-      run: ${{ github.action_path }}/src/run_coding_standard.sh
+    - name: Running coding standard analysis
+      shell: bash
+      run: ${{ github.action_path }}/src/run_coding_standard.bash
 branding:
   icon: 'check-square'
   color: 'blue'
