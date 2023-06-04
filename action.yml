@@ -12,6 +12,12 @@ inputs:
   severity:
     description: "The minimum severity required to display an error or warning"
     required: false
+  warning_severity:
+    description: "The minimum severity required to display warning"
+    required: false
+  error_severity:
+    description: "The minimum severity required to display an error"
+    required: false
   verbosity:
     description: "Code Sniffer verbosity"
     required: false
