@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 ${INPUT_PHPCS_PATH:-phpcs} \
     --parallel=${INPUT_PROCESSES:-1} \
     --runtime-set ignore_errors_on_exit ${INPUT_IGNORE_ERRORS_ON_EXIT:-0} \
