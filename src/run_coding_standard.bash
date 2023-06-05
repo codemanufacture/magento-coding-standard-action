@@ -11,4 +11,4 @@ ${INPUT_PHPCS_PATH:-phpcs} \
     $([ -n "${INPUT_WARNING_SEVERITY}" ] && echo "--warning-severity=${INPUT_WARNING_SEVERITY}") \
     $([ -n "${INPUT_ERROR_SEVERITY}" ] && echo "--error-severity=${INPUT_ERROR_SEVERITY}") \
     $([ -n "${INPUT_IGNORE}" ] && echo "--ignore=${INPUT_IGNORE}") \
-    ${INPUT_VERBOSITY:-} ${INPUT_DIRECTORY:-.}
+    ${INPUT_VERBOSITY:-} ${INPUT_FILE_LIST:-.}

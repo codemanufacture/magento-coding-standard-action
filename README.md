@@ -42,7 +42,7 @@ jobs:
 | `coding_standard_version`   | "*"                             | Lastest version installed by setting "*"                                                             |
 | `extensions`                | "php"                           | A comma separated list of file extensions to check                                                   |
 | `phpcs_path`                | "phpcs"                         | Path to Code Sniffer binary                                                                          |
-| `directory`                 | $GITHUB_WORKSPACE               | Working directory where analysis is run                                                              |
+| `file_list`                 | $GITHUB_WORKSPACE               | Working directory or file list to analyse                                                              |
 | `ignore_errors_on_exit`     | 0                               | Ignoring errors when generating the exit code when set to `1`                                        |
 | `ignore_warnings_on_exit`   | 0                               | Ignoring warnings when generating the exit code when set to `1`                                      |
 | `ignore`                    | no value                        | A comma separated list of patterns to ignore files and directories                                   |

@@ -25,7 +25,7 @@ jobs:
     - name: Run coding standard analysis
       uses: ./
       with:
-        directory: "${{github.workspace}}/module"
+        file_list: "${{github.workspace}}/module"
         severity: 5
         ignore_errors_on_exit: 1
         ignore_warnings_on_exit: 1
