@@ -1,4 +1,4 @@
-name: "Coding standard analysis with PHP_CodeSniffer"
+name: "Magento 2 coding standard analysis with PHP_CodeSniffer"
 author: "Codemanufacture"
 description: "Performs static code analysis with PHP_CodeSniffer and Magento 2 coding standard by default"
 inputs:
