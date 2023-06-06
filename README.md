@@ -1,16 +1,19 @@
 # Magento 2 Coding Standard GitHub Action
 
-This [GitHub Action](https://github.com/actions) performs static code analysis using [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) and [Magento Coding Standard](https://github.com/magento/magento-coding-standard).
+This [GitHub Action](https://github.com/actions) performs static code analysis using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) and [Magento Coding Standard](https://github.com/magento/magento-coding-standard).
+
+![basic workflow run](https://github.com/codemanufacture/magento-coding-standard-action/actions/workflows/basic-workflow-test.yml/badge.svg)
+![automated tests](https://github.com/codemanufacture/magento-coding-standard-action/actions/workflows/test.yml/badge.svg)
+![Status](https://img.shields.io/badge/status-maintained-brightgreen)
+[![MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 
 ## Usage
 
-Create `.github/workflows/coding-standard.yml` in your
-repository with the following contents:
+Create `.github/workflows/coding-standard.yml` in your repository with the following contents:
 
 ```yaml
 name: "Magento 2 Coding Standard"
 on:
-  pull_request:
   push:
 jobs:
   coding-standard:
@@ -23,7 +26,7 @@ jobs:
         php-version: 8.1
         tools: composer:2.3, phpcs:3.6
     - name: Run coding standard analysis
-      uses: codemanufacture/magento-coding-standard-action@main
+      uses: codemanufacture/magento-coding-standard-action@v1
 ```
 
 ## Inputs (specify using with:)
@@ -42,7 +45,7 @@ jobs:
 | `coding_standard_version`   | "*"                             | Lastest version installed by setting "*"                                                             |
 | `extensions`                | "php"                           | A comma separated list of file extensions to check                                                   |
 | `phpcs_path`                | "phpcs"                         | Path to Code Sniffer binary                                                                          |
-| `file_list`                 | $GITHUB_WORKSPACE               | Working directory or file list to analyse                                                              |
+| `file_list`                 | $GITHUB_WORKSPACE               | Working directory or file list to analyse                                                            |
 | `ignore_errors_on_exit`     | 0                               | Ignoring errors when generating the exit code when set to `1`                                        |
 | `ignore_warnings_on_exit`   | 0                               | Ignoring warnings when generating the exit code when set to `1`                                      |
 | `ignore`                    | no value                        | A comma separated list of patterns to ignore files and directories                                   |

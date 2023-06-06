@@ -1,4 +1,4 @@
-name: "Magento 2 Coding Standard Tests"
+name: "Automated test suite"
 on:
   pull_request:
     paths-ignore:
@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: bats-core/bats-core
-          ref: v1.9.0
+          ref: ${{ vars.BATS_VERSION }}
           path: bats
       - name: Install bats
         run: sudo ./install.sh /usr/local
@@ -24,7 +24,7 @@ jobs:
       - name: Install PHP and composer
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
-          tools: composer:2.3, phpcs:3.6
+          php-version: ${{ vars.TEST_SUITE_PHP_VERSION }}
+          tools: composer:${{ vars.TEST_SUITE_COMPOSER_VERSION }}, phpcs:${{ vars.TEST_SUITE_PHPCS_VERSION }}
       - name: Run tests
         run: bats --tap tests
