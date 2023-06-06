@@ -1,4 +1,4 @@
-name: "Magento 2 Coding Standard"
+name: "Magento 2 Coding Standard Demo"
 on:
   pull_request:
     paths-ignore:

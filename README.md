@@ -4,7 +4,8 @@ This [GitHub Action](https://github.com/actions) performs static code analysis u
 
 ![basic workflow run](https://github.com/codemanufacture/magento-coding-standard-action/actions/workflows/basic-workflow-test.yml/badge.svg)
 ![automated tests](https://github.com/codemanufacture/magento-coding-standard-action/actions/workflows/test.yml/badge.svg)
-[![MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](./LICENSE)
+[![Maintenance](https://img.shields.io/badge/maintained-yes)]
+[![MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 
 ## Usage
 
