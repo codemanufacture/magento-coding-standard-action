@@ -2,8 +2,8 @@
 
 This [GitHub Action](https://github.com/actions) performs static code analysis using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) and [Magento Coding Standard](https://github.com/magento/magento-coding-standard).
 
-![basic workflow run](https://github.com/codemanufacture/magento-coging-standard-action/.github/workflows/basic-workflow-test.yml/badge.svg)
-![automated tests](https://github.com/codemanufacture/magento-coging-standard-action/.github/workflows/test.yml/badge.svg)
+![basic workflow run](https://github.com/codemanufacture/magento-coging-standard-action/actions/workflows/basic-workflow-test.yml/badge.svg)
+![automated tests](https://github.com/codemanufacture/magento-coging-standard-action/actions/workflows/test.yml/badge.svg)
 [![MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](./LICENSE)
 
 ## Usage
