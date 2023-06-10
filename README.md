@@ -31,24 +31,24 @@ jobs:
 
 ## Inputs (specify using with:)
 
-| Option                      | Default value                   | Description                                                                                          |
-|-----------------------------|---------------------------------|------------------------------------------------------------------------------------------------------|
-| `standard`                  | "Magento2"                      | The name or path of the coding standard to use                                                       |
-| `severity`                  | no value                        | The minimum severity required to display an error or warning                                         |
-| `warning_severity`          | no value                        | The minimum severity required to display warning                                                     |
-| `error_severity`            | no value                        | The minimum severity required to display error                                                       |
-| `verbosity`                 | no value                        | -v Print processed files -vv Print ruleset and token output -vvv  Print sniff processing information |
-| `report_style`              | "checkstyle"                    | Code Sniffer built-in reporter or a path to a custom report class                                    |
-| `processes`                 | 1                               | How many files should be checked simultaneously                                                      |
-| `install_magento2_standard` | true                            | Installs Magento Coding Standard when set to true                                                    |
-| `coding_standard_package`   | magento/magento-coding-standard | Composer package name of coding standard to install                                                  |
-| `coding_standard_version`   | "*"                             | Lastest version installed by setting "*"                                                             |
-| `extensions`                | "php"                           | A comma separated list of file extensions to check                                                   |
-| `phpcs_path`                | "phpcs"                         | Path to Code Sniffer binary                                                                          |
-| `file_list`                 | $GITHUB_WORKSPACE               | Working directory or file list to analyse                                                            |
-| `ignore_errors_on_exit`     | 0                               | Ignoring errors when generating the exit code when set to `1`                                        |
-| `ignore_warnings_on_exit`   | 0                               | Ignoring warnings when generating the exit code when set to `1`                                      |
-| `ignore`                    | no value                        | A comma separated list of patterns to ignore files and directories                                   |
+| Option                    | Default value                   | Description                                                                                          |
+|---------------------------|---------------------------------|------------------------------------------------------------------------------------------------------|
+| `standard`                | "Magento2"                      | The name or path of the coding standard to use                                                       |
+| `severity`                | no value                        | The minimum severity required to display an error or warning                                         |
+| `warning_severity`        | no value                        | The minimum severity required to display warning                                                     |
+| `error_severity`          | no value                        | The minimum severity required to display error                                                       |
+| `verbosity`               | no value                        | -v Print processed files -vv Print ruleset and token output -vvv  Print sniff processing information |
+| `report_style`            | "checkstyle"                    | Code Sniffer built-in reporter or a path to a custom report class                                    |
+| `processes`               | 1                               | How many files should be checked simultaneously                                                      |
+| `install_coding_standard` | true                            | Installs coding standard when set to true                                                            |
+| `coding_standard_package` | magento/magento-coding-standard | Composer package name of coding standard to install                                                  |
+| `coding_standard_version` | "*"                             | Lastest version installed by setting "*"                                                             |
+| `extensions`              | "php"                           | A comma separated list of file extensions to check                                                   |
+| `phpcs_path`              | "phpcs"                         | Path to Code Sniffer binary                                                                          |
+| `file_list`               | $GITHUB_WORKSPACE               | Working directory or file list to analyse                                                            |
+| `ignore_errors_on_exit`   | 0                               | Ignoring errors when generating the exit code when set to `1`                                        |
+| `ignore_warnings_on_exit` | 0                               | Ignoring warnings when generating the exit code when set to `1`                                      |
+| `ignore`                  | no value                        | A comma separated list of patterns to ignore files and directories                                   |
 
 
 ## Goals of this actions are:
