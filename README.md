@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0   # Depth is needed for PR violation reports
     - name: Setup PHP with composer
       uses: shivammathur/setup-php@v2
       with:
@@ -28,6 +30,18 @@ jobs:
     - name: Run coding standard analysis
       uses: codemanufacture/magento-coding-standard-action@v1
 ```
+
+![Screenshot](./assets/pr-pipeline.png "Pull request pipeline")
+
+## Features
+
+* By default installs Magento coding standard.
+* Allows to provide custom coding standard like [MRM Commerce](https://github.com/mrm-commerce/magento-coding-standard-phpcs)
+* Exposes most of PHP_Codesniffer parameters.
+* Allows to specify severity level.
+* In pull requests an analysis is limited to modified files.
+* Coding standard violations are reported next to offending code:
+![Screenshot](./assets/pr-matchers.png "Pull request matchers")
 
 ## Inputs (specify using with:)
 
@@ -50,6 +64,7 @@ jobs:
 | `ignore_warnings_on_exit` | 0                               | Ignoring warnings when generating the exit code when set to `1`                                      |
 | `ignore`                  | no value                        | A comma separated list of patterns to ignore files and directories                                   |
 
+See [action.yml](./action.yml).
 
 ## Goals of this actions are:
 
