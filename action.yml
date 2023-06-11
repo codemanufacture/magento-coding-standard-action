@@ -56,6 +56,9 @@ inputs:
   ignore_errors_on_exit:
     required: false
     default: 0
+  ignore:
+    description: "A comma separated list of patterns to ignore files and directories"
+    required: false
 runs:
   using: "composite"
   steps:
@@ -95,6 +98,7 @@ runs:
         INPUT_STANDARD: ${{ inputs.standard }}
         INPUT_VERBOSITY: ${{ inputs.verbosity }}
         INPUT_REPORT_STYLE: ${{ inputs.report_style }}
+        INPUT_IGNORE: ${{ inputs.ignore }}
 branding:
   icon: 'check-square'
   color: 'blue'
