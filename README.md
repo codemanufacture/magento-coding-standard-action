@@ -29,6 +29,8 @@ jobs:
       uses: codemanufacture/magento-coding-standard-action@v1
 ```
 
+![Screenshot](./assets/pr-matchers.png "Pull request matchers")
+
 ## Inputs (specify using with:)
 
 | Option                    | Default value                   | Description                                                                                          |
@@ -49,7 +51,6 @@ jobs:
 | `ignore_errors_on_exit`   | 0                               | Ignoring errors when generating the exit code when set to `1`                                        |
 | `ignore_warnings_on_exit` | 0                               | Ignoring warnings when generating the exit code when set to `1`                                      |
 | `ignore`                  | no value                        | A comma separated list of patterns to ignore files and directories                                   |
-
 
 ## Goals of this actions are:
 
