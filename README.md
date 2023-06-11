@@ -31,10 +31,12 @@ jobs:
       uses: codemanufacture/magento-coding-standard-action@v1
 ```
 
+![Screenshot](./assets/pr-pipeline.png "Pull request pipeline")
+
 ## Features
 
 * By default installs Magento coding standard.
-* Allows to provide custom coding standard.
+* Allows to provide custom coding standard like [MRM Commerce](https://github.com/mrm-commerce/magento-coding-standard-phpcs)
 * Exposes most of PHP_Codesniffer parameters.
 * Allows to specify severity level.
 * In pull requests an analysis is limited to modified files.
@@ -61,6 +63,8 @@ jobs:
 | `ignore_errors_on_exit`   | 0                               | Ignoring errors when generating the exit code when set to `1`                                        |
 | `ignore_warnings_on_exit` | 0                               | Ignoring warnings when generating the exit code when set to `1`                                      |
 | `ignore`                  | no value                        | A comma separated list of patterns to ignore files and directories                                   |
+
+See [action.yml](./action.yml).
 
 ## Goals of this actions are:
 
