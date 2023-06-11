@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0   # Depth is needed for PR violation reports
     - name: Setup PHP with composer
       uses: shivammathur/setup-php@v2
       with:
@@ -29,6 +31,14 @@ jobs:
       uses: codemanufacture/magento-coding-standard-action@v1
 ```
 
+## Features
+
+* By default installs Magento coding standard.
+* Allows to provide custom coding standard.
+* Exposes most of PHP_Codesniffer parameters.
+* Allows to specify severity level.
+* In pull requests an analysis is limited to modified files.
+* Coding standard violations are reported next to offending code:
 ![Screenshot](./assets/pr-matchers.png "Pull request matchers")
 
 ## Inputs (specify using with:)
