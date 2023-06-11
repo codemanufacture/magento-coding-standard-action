@@ -32,7 +32,7 @@ teardown() {
     export INPUT_CODING_STANDARD_VERSION=30
     run install_coding_standard.bash
     run composer global info
-    [[ "$output" =~ "magento/magento-coding-standard    30" ]]
+    [[ "$output" =~ "magento/magento-coding-standard"\ *30 ]]
 }
 
 @test "Coding standard package is installed" {
