@@ -63,6 +63,7 @@ jobs:
 | `ignore_errors_on_exit`   | 0                               | Ignoring errors when generating the exit code when set to `1`                                        |
 | `ignore_warnings_on_exit` | 0                               | Ignoring warnings when generating the exit code when set to `1`                                      |
 | `ignore`                  | no value                        | A comma separated list of patterns to ignore files and directories                                   |
+| `pr_modified_files_only`  | "true"                          | Restricts analysis to modified files in a pull request                                                                                                     |
 
 See [action.yml](./action.yml).
 

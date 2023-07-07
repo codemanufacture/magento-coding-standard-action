@@ -59,6 +59,10 @@ inputs:
   ignore:
     description: "A comma separated list of patterns to ignore files and directories"
     required: false
+  pr_modified_files_only:
+    description: "Restricts analysis to modified files in a pull request"
+    required: false
+    default: true
 runs:
   using: "composite"
   steps:
@@ -68,7 +72,7 @@ runs:
         GITHUB_TOKEN: ${{ github.token }}
         INPUT_CODING_STANDARD_PACKAGE: ${{ inputs.coding_standard_package }}
         INPUT_CODING_STANDARD_VERSION: ${{ inputs.coding_standard_version }}
-      if: ${{ inputs.install_coding_standard }}
+      if: inputs.install_coding_standard
       run: ${{ github.action_path }}/src/install_coding_standard.bash
     - name: Check if phpcs exists
       shell: bash
@@ -81,7 +85,7 @@ runs:
       shell: bash
       id: pr-files
       run: echo "files=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)" >> $GITHUB_OUTPUT
-      if: github.event_name == 'pull_request'
+      if: inputs.pr_modified_files_only && github.event_name == 'pull_request'
     - name: Running coding standard analysis
       shell: bash
       run: ${{ github.action_path }}/src/run_coding_standard.bash
