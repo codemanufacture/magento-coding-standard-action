@@ -11,9 +11,9 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Clone bats repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: bats-core/bats-core
           ref: ${{ vars.BATS_VERSION }}

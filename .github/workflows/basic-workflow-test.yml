@@ -11,8 +11,8 @@ jobs:
   coding-standard:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
         repository: codemanufacture/magento2-dummy-module
         ref: main
