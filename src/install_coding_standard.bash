@@ -7,6 +7,14 @@ composer global require --no-interaction ${CODING_STANDARD}:${INPUT_CODING_STAND
 
 # Fixme: find a better way to handle adding standards
 if [ "${CODING_STANDARD}" = "magento/magento-coding-standard" ] ; then
-    composer global -- exec phpcs --config-set installed_paths \
-             ../../magento/magento-coding-standard/,../../phpcompatibility/php-compatibility
+    INSTALL_PATHS="../../magento/magento-coding-standard/"
+    if composer global show magento/php-compatibility-fork > /dev/null 2>&1; then
+        INSTALL_PATHS="${INSTALL_PATHS},../../magento/php-compatibility-fork"
+    fi
+
+    if composer global show phpcompatibility/php-compatibility > /dev/null 2>&1; then
+        INSTALL_PATHS="${INSTALL_PATHS},../../phpcompatibility/php-compatibility"
+    fi
+
+    composer global -- exec phpcs --config-set installed_paths "$INSTALL_PATHS"
 fi

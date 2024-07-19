@@ -33,6 +33,20 @@ teardown() {
     run install_coding_standard.bash
     run composer global info
     [[ "$output" =~ "magento/magento-coding-standard"\ *30 ]]
+    run composer global -- exec "phpcs --config-show"
+    [[ "$output" =~ "phpcompatibility/php-compatibility" ]]
+}
+
+@test "Coding standard is installed with version 33" {
+    if ! command -v composer > /dev/null ; then
+        skip "Composer is not installed."
+    fi
+    export INPUT_CODING_STANDARD_VERSION=33
+    run install_coding_standard.bash
+    run composer global info
+    [[ "$output" =~ "magento/magento-coding-standard"\ *33 ]]
+    run composer global -- exec "phpcs --config-show"
+    [[ "$output" =~ "magento/php-compatibility-fork" ]]
 }
 
 @test "Coding standard package is installed" {
